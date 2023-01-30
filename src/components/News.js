@@ -34,16 +34,6 @@ export default class News extends Component {
           "content": "Days after Andrea Riseborough shocked Hollywood by landing a Best Actress Oscar nomination for her little-seen film To Leslie, the Academy of Motion Picture Arts and Sciences announced that it is con… [+1468 chars]"
         },
         {
-          "source": { "id": "financial-times", "name": "Financial Times" },
-          "author": "Steff Chávez, George Hammond",
-          "title": "Video shows deadly beating of Tyre Nichols by Memphis police - Financial Times",
-          "description": "News, analysis and comment from the Financial Times, the worldʼs leading global business publication",
-          "url": "https://www.ft.com/content/da474eda-873f-42ac-bbb3-4d3b6a07991a",
-          "urlToImage": null,
-          "publishedAt": "2023-01-28T14:17:53Z",
-          "content": "What is included in my trial?\r\nDuring your trial you will have complete digital access to FT.com with everything in both of our Standard Digital and Premium Digital packages.\r\nStandard Digital includ… [+1496 chars]"
-        },
-        {
           "source": { "id": null, "name": "Daily Mail" },
           "author": "Jack Bezants",
           "title": "Brittany Mahomes rages at 'WEAK and embarrassing' Cincinnati mayor for trolling Chiefs star Patrick - Daily Mail",
@@ -52,16 +42,6 @@ export default class News extends Component {
           "urlToImage": "https://i.dailymail.co.uk/1s/2023/01/28/14/67070899-0-image-a-16_1674915284423.jpg",
           "publishedAt": "2023-01-28T14:15:35Z",
           "content": "Patrick Mahomes's wife Brittany has called the mayor of Cincinnati 'weak and embarrassing' after he trolled the Chiefs quarterback before Sunday's game against the Bengals.\r\nCincinnati mayor Aftab Pu… [+3276 chars]"
-        },
-        {
-          "source": { "id": "google-news", "name": "Google News" },
-          "author": null,
-          "title": "85-car pileup in Wisconsin leaves at least 21 injured - The Hill",
-          "description": null,
-          "url": "https://news.google.com/__i/rss/rd/articles/CBMiZ2h0dHBzOi8vdGhlaGlsbC5jb20vaG9tZW5ld3Mvc3RhdGUtd2F0Y2gvMzgzNDM1Mi04NS1jYXItcGlsZXVwLWluLXdpc2NvbnNpbi1sZWF2ZXMtYXQtbGVhc3QtMjEtaW5qdXJlZC_SAWtodHRwczovL3RoZWhpbGwuY29tL2hvbWVuZXdzL3N0YXRlLXdhdGNoLzM4MzQzNTItODUtY2FyLXBpbGV1cC1pbi13aXNjb25zaW4tbGVhdmVzLWF0LWxlYXN0LTIxLWluanVyZWQvYW1wLw?oc=5",
-          "urlToImage": null,
-          "publishedAt": "2023-01-28T14:15:00Z",
-          "content": null
         },
         {
           "source": { "id": "cnn", "name": "CNN" },
@@ -184,16 +164,6 @@ export default class News extends Component {
           "content": "Lawyers for Sam Bankman-Fried have argued he should be allowed access to assets and crypto held by his former company FTX, saying there's no evidence he's responsible for previous alleged unauthorize… [+2353 chars]"
         },
         {
-          "source": { "id": "bloomberg", "name": "Bloomberg" },
-          "author": null,
-          "title": "Adani Hindenburg Research Latest News: January 28, 2023 - Bloomberg",
-          "description": null,
-          "url": "https://www.bloomberg.com/tosv2.html?vid=&uuid=180d54a7-9f1c-11ed-afc7-794455506278&url=L25ld3MvYXJ0aWNsZXMvMjAyMy0wMS0yOC9hZGFuaS1zLWRldGFpbGVkLWhpbmRlbmJ1cmctcmVwbHktbm93LXNhaWQtdG8tYmUtcG9zdC1zaGFyZS1zYWxl",
-          "urlToImage": null,
-          "publishedAt": "2023-01-28T10:03:41Z",
-          "content": "To continue, please click the box below to let us know you're not a robot."
-        },
-        {
           "source": { "id": null, "name": "HuffPost" },
           "author": "AP",
           "title": "How To See The Green Comet Zooming Our Way For First Time In 50,000 Years - HuffPost",
@@ -216,15 +186,13 @@ export default class News extends Component {
       <div className='container mt-5'>
         <h2 className='mb-5'>TOP NEWS TODAY</h2>
         <div className='row'>
-            <div className='col-md-4'>
-                <NewsItem title="Title 1" desc="Desc 1" imageUrl="https://media.cnn.com/api/v1/images/stellar/prod/230128112244-01-los-angeles-shooting-0128.jpg?c=16x9&q=w_800,c_fill" newsUrl="TODO"/>
-            </div>
-            <div className='col-md-4'>
-                <NewsItem title="Title 2" desc="Desc 2"/>
-            </div>
-            <div className='col-md-4'>
-                <NewsItem title="Title 3" desc="Desc 3"/>
-            </div>
+        {this.state.articles.map((element)=>{
+            return <div className='col-md-4' key={element.url}>
+            <NewsItem title={element.title.slice(0,45)} desc={element.description.slice(0,88)} imageUrl={element.urlToImage} newsUrl={element.url}/>
+        </div>
+        })}
+            
+            
         </div>
       </div>
     )
