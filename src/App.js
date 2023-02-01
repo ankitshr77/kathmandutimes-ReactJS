@@ -12,6 +12,7 @@ import LoadingBar from 'react-top-loading-bar'
 
 export default class App extends Component {
   pageSize = 9;
+  apiKey = process.env.REACT_APP_NEWS_API
 
   state = {
     progress: 0
@@ -31,13 +32,19 @@ export default class App extends Component {
               height={3}
           />
           <Routes>
-              <Route exact path="/" element={<News setProgress = {this.setProgress}  key="general" toptitle="Top Headlines - " pageSize={this.pageSize} country="us" category="general"/>}/>
-              <Route exact path="/business" element={<News setProgress = {this.setProgress}  key="business" toptitle="Top Headlines - " pageSize={this.pageSize} country="us" category="business"/>}/>
-              <Route exact path="/entertainment" element={<News setProgress = {this.setProgress}  key="entertainment" toptitle="Top Headlines - " pageSize={this.pageSize} country="us" category="entertainment"/>}/>
-              <Route exact path="/health" element={<News setProgress = {this.setProgress}  key="health" toptitle="Top Headlines - " pageSize={this.pageSize} country="us" category="health"/>}/>
-              <Route exact path="/science" element={<News setProgress = {this.setProgress}  key="science" toptitle="Top Headlines - " pageSize={this.pageSize} country="us" category="science"/>}/>
-              <Route exact path="/sports" element={<News setProgress = {this.setProgress}  key="sports" toptitle="Top Headlines - " pageSize={this.pageSize} country="us" category="sports"/>}/>
-              <Route exact path="/technology" element={<News setProgress = {this.setProgress}  key="technology" toptitle="Top Headlines - " pageSize={this.pageSize} country="us" category="technology"/>}/>
+              <Route exact path="/" element={<News setProgress = {this.setProgress} apiKey={this.apiKey}  key="general" toptitle="Top Headlines - " pageSize={this.pageSize} country="us" category="general"/>}/>
+
+              <Route exact path="/business" element={<News setProgress = {this.setProgress} apiKey={this.apiKey}  key="business" toptitle="Top Headlines - " pageSize={this.pageSize} country="us" category="business"/>}/>
+
+              <Route exact path="/entertainment" element={<News setProgress = {this.setProgress} apiKey={this.apiKey}  key="entertainment" toptitle="Top Headlines - " pageSize={this.pageSize} country="us" category="entertainment"/>}/>
+
+              <Route exact path="/health" element={<News setProgress = {this.setProgress} apiKey={this.apiKey}  key="health" toptitle="Top Headlines - " pageSize={this.pageSize} country="us" category="health"/>}/>
+
+              <Route exact path="/science" element={<News setProgress = {this.setProgress} apiKey={this.apiKey}  key="science" toptitle="Top Headlines - " pageSize={this.pageSize} country="us" category="science"/>}/>
+
+              <Route exact path="/sports" element={<News setProgress = {this.setProgress} apiKey={this.apiKey}  key="sports" toptitle="Top Headlines - " pageSize={this.pageSize} country="us" category="sports"/>}/>
+
+              <Route exact path="/technology" element={<News setProgress = {this.setProgress} apiKey={this.apiKey}  key="technology" toptitle="Top Headlines - " pageSize={this.pageSize} country="us" category="technology"/>}/>
           </Routes> 
         </Router>
       </div>
