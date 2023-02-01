@@ -92,16 +92,16 @@ export default class News extends Component {
         <div className='row'>
         {!this.state.loading && this.state.articles.map((element)=>{
             return <div className='col-md-4' key={element.url}>
-            <NewsItem title={element.title?element.title:""} desc={element.description?element.description:""} imageUrl={element.urlToImage} newsUrl={element.url}/>
+            <NewsItem title={element.title?element.title:""} desc={element.description?element.description:""} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name}/>
         </div>
         })}    
             
         </div>
 
         <div className='d-flex justify-content-center my-4'>
-            <button disabled={this.state.page<=1} type="button" className='mx-2 btn btn-primary' onClick={this.handlePrevClick}>&larr; Previous </button>
+            <button disabled={this.state.page<=1} type="button" className='mx-2 btn btn-dark' onClick={this.handlePrevClick}>&larr; Previous </button>
 
-            <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults/this.props.pageSize)} type="button" className='mx-2 btn btn-primary' onClick={this.handleNextClick}>Next &rarr;</button>
+            <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults/this.props.pageSize)} type="button" className='mx-2 btn btn-dark' onClick={this.handleNextClick}>Next &rarr;</button>
         </div>
 
 
