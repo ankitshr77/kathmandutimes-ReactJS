@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import NewsItem from './NewsItem'
+import Spinner from './Spinner';
 
 export default class News extends Component {
     
@@ -13,59 +14,68 @@ export default class News extends Component {
     }
 
     async componentDidMount(){
-        let url = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=0c5e0940eca74c6d89ba1ac79cc177c4&page=1&pageSize=20"
-
+        let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=0c5e0940eca74c6d89ba1ac79cc177c4&page=1&pageSize=${this.props.pageSize}`
+        
+        this.setState({loading:true});
         let data = await fetch(url);
 
         let parsedData = await data.json()
 
-        this.setState({articles:parsedData.articles, totalResults: parsedData.totalResults})
+        this.setState({articles:parsedData.articles, 
+                       totalResults: parsedData.totalResults,
+                       loading:false
+                    })
     }
 
     handlePrevClick = async ()=>{
         console.log("Previous")
 
-        let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=0c5e0940eca74c6d89ba1ac79cc177c4&page=${this.state.page - 1}&pageSize=20`;
+        let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=0c5e0940eca74c6d89ba1ac79cc177c4&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
 
+        this.setState({loading:true});
         let data = await fetch(url);
 
         let parsedData = await data.json()
 
         this.setState({
             page: this.state.page - 1,
-            articles:parsedData.articles
+            articles:parsedData.articles,
+            loading:false
         })
     }
 
     handleNextClick = async ()=>{
         console.log("Next")
 
-        if(this.state.page + 1 > Math.ceil(this.state.totalResults/20)){
+        if(!(this.state.page + 1 > Math.ceil(this.state.totalResults/this.props.pageSize))){
 
-        }
+            let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=0c5e0940eca74c6d89ba1ac79cc177c4&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
 
-        else{
-            let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=0c5e0940eca74c6d89ba1ac79cc177c4&page=${this.state.page + 1}&pageSize=20`;
+            this.setState({loading:true});
+            let data = await fetch(url);
 
-        let data = await fetch(url);
+            let parsedData = await data.json()
 
-        let parsedData = await data.json()
-
-        this.setState({
-            page: this.state.page + 1,
-            articles:parsedData.articles
-        })
-        }
+            this.setState({
+                page: this.state.page + 1,
+                articles:parsedData.articles,
+                loading:false
+            })
+            }
 
     }
 
 
   render() {
+
     return (
       <div className='container my-4'>
-        <h2 className='mb-5'>TOP NEWS TODAY</h2>
+        <h2 className='mb-5 text-center'>{this.props.toptitle}</h2>
+
+        {this.state.loading && <Spinner/>}
+
         <div className='row'>
-        {this.state.articles.map((element)=>{
+        {!this.state.loading && this.state.articles.map((element)=>{
             return <div className='col-md-4' key={element.url}>
             <NewsItem title={element.title?element.title:""} desc={element.description?element.description:""} imageUrl={element.urlToImage} newsUrl={element.url}/>
         </div>
@@ -76,7 +86,7 @@ export default class News extends Component {
         <div className='d-flex justify-content-center my-4'>
             <button disabled={this.state.page<=1} type="button" className='mx-2 btn btn-primary' onClick={this.handlePrevClick}>&larr; Previous </button>
 
-            <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults/20)} type="button" className='mx-2 btn btn-primary' onClick={this.handleNextClick}>Next &rarr;</button>
+            <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults/this.props.pageSize)} type="button" className='mx-2 btn btn-primary' onClick={this.handleNextClick}>Next &rarr;</button>
         </div>
 
 
