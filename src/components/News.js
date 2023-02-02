@@ -63,8 +63,6 @@ const News = (props)=> {
 
     }
 
-    const length = articles ? articles.length : 0;
-
     return (
       <>
         <h2 className='maintext text-center'>{props.toptitle} {capitalizeFirstLetter(props.category)}</h2>
@@ -74,7 +72,7 @@ const News = (props)=> {
         <InfiniteScroll
           dataLength={articles.length}
           next={fetchMoreData}
-          hasMore={length !== totalResults}
+          hasMore={articles.length !== totalResults}
           loader={<Spinner/>}
         >
 
