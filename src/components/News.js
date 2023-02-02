@@ -45,9 +45,10 @@ const News = (props)=> {
         updateNews();
         // eslint-disable-next-line
 
-    }, [1]) 
+    }, []) 
 
     const fetchMoreData = async () => {
+
         let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`
 
         setPage(page+1)
@@ -62,6 +63,8 @@ const News = (props)=> {
 
     }
 
+    const length = articles ? articles.length : 0;
+
     return (
       <>
         <h2 className='maintext text-center'>{props.toptitle} {capitalizeFirstLetter(props.category)}</h2>
@@ -71,7 +74,7 @@ const News = (props)=> {
         <InfiniteScroll
           dataLength={articles.length}
           next={fetchMoreData}
-          hasMore={articles.length !== totalResults}
+          hasMore={length !== totalResults}
           loader={<Spinner/>}
         >
 
