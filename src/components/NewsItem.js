@@ -5,7 +5,7 @@ const NewsItem = (props) =>{
     let {title, desc, imageUrl, newsUrl,author, date, source} = props;
     return (
       
-        <div className="card my-3">
+        <div className={`card my-3 bg-${props.mode==='dark'?'white':'black'} text-${props.mode ==='dark'?'black':'white'}`}>
             <img src={!imageUrl?"https://t4.ftcdn.net/jpg/04/00/24/31/360_F_400243185_BOxON3h9avMUX10RsDkt3pJ8iQx72kS3.jpg":imageUrl} className="card-img-top" alt="..."/>
             <div className="card-body">
             <h5 className="card-title">{title}...</h5>
