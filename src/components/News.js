@@ -65,7 +65,7 @@ const News = (props)=> {
 
     return (
       <>
-        <h2 className='maintext text-center'>{props.toptitle} {capitalizeFirstLetter(props.category)}</h2>
+        <h2 className={`maintext text-center text-${props.mode==='light'?'light':'dark'}`}>{props.toptitle} {capitalizeFirstLetter(props.category)}</h2>
 
         {loading && <Spinner/>}
 
