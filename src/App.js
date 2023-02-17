@@ -14,7 +14,7 @@ function App() {
     if(mode==='dark'){
       setMode('light')
       setDbtn("Disable Dark Mode")
-      document.body.style.backgroundColor = "black"
+      document.body.style.backgroundColor = "#212529"
       document.body.style.color="black"
     } 
     else{
@@ -41,19 +41,19 @@ function App() {
               height={3}
           />
           <Routes>
-              <Route exact path="/" element={<News setProgress = {setProgress} apiKey={apiKey}  key="general" toptitle="Top Headlines - " pageSize={pageSize} country="us" mode={mode} toggleMode={toggleMode} dbtn={dbtn} category="general"/>}/>
+              <Route exact path="/" element={<News setProgress = {setProgress} apiKey={apiKey}  key="general"  toptitle="Top Headlines - " pageSize={pageSize} country="us" mode={mode} toggleMode={toggleMode} dbtn={dbtn} category="general"/>}/>
 
-              <Route exact path="/business" element={<News setProgress = {setProgress} apiKey={apiKey}  key="business" toptitle="Top Headlines - " pageSize={pageSize} country="us" mode={mode} toggleMode={toggleMode} dbtn={dbtn} category="business"/>}/>
+              <Route exact path="/business" element={<News setProgress = {setProgress} apiKey={apiKey}  key="business"  toptitle="Top Headlines - " pageSize={pageSize} country="us" mode={mode} toggleMode={toggleMode} dbtn={dbtn} category="business"/>}/>
 
-              <Route exact path="/entertainment" element={<News setProgress = {setProgress} apiKey={apiKey}  key="entertainment" toptitle="Top Headlines - " pageSize={pageSize} country="us" mode={mode} toggleMode={toggleMode} dbtn={dbtn} category="entertainment"/>}/>
+              <Route exact path="/entertainment" element={<News setProgress = {setProgress} apiKey={apiKey}  key="entertainment"  toptitle="Top Headlines - " pageSize={pageSize} country="us" mode={mode} toggleMode={toggleMode} dbtn={dbtn} category="entertainment"/>}/>
 
-              <Route exact path="/health" element={<News setProgress = {setProgress} apiKey={apiKey}  key="health" toptitle="Top Headlines - " pageSize={pageSize} country="us" mode={mode} toggleMode={toggleMode} dbtn={dbtn} category="health"/>}/>
+              <Route exact path="/health" element={<News setProgress = {setProgress} apiKey={apiKey}  key="health"  toptitle="Top Headlines - " pageSize={pageSize} country="us" mode={mode} toggleMode={toggleMode} dbtn={dbtn} category="health"/>}/>
 
-              <Route exact path="/science" element={<News setProgress = {setProgress} apiKey={apiKey}  key="science" toptitle="Top Headlines - " pageSize={pageSize} country="us" mode={mode} toggleMode={toggleMode} dbtn={dbtn} category="science"/>}/>
+              <Route exact path="/science" element={<News setProgress = {setProgress} apiKey={apiKey}  key="science"  toptitle="Top Headlines - " pageSize={pageSize} country="us" mode={mode} toggleMode={toggleMode} dbtn={dbtn} category="science"/>}/>
 
-              <Route exact path="/sports" element={<News setProgress = {setProgress} apiKey={apiKey}  key="sports" toptitle="Top Headlines - " pageSize={pageSize} country="us" mode={mode} toggleMode={toggleMode} dbtn={dbtn} category="sports"/>}/>
+              <Route exact path="/sports" element={<News setProgress = {setProgress} apiKey={apiKey}  key="sports"  toptitle="Top Headlines - " pageSize={pageSize} country="us" mode={mode} toggleMode={toggleMode} dbtn={dbtn} category="sports"/>}/>
 
-              <Route exact path="/technology" element={<News setProgress = {setProgress} apiKey={apiKey}  key="technology" toptitle="Top Headlines - " pageSize={pageSize} country="us" mode={mode} toggleMode={toggleMode} dbtn={dbtn} category="technology"/>}/>
+              <Route exact path="/technology" element={<News setProgress = {setProgress} apiKey={apiKey}  key="technology"  toptitle="Top Headlines - " pageSize={pageSize} country="us" mode={mode} toggleMode={toggleMode} dbtn={dbtn} category="technology"/>}/>
           </Routes> 
         </Router>
       </div>
